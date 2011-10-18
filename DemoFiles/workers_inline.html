@@ -1,0 +1,116 @@
+<html>
+<head>
+    <link href="../style/syntaxHighlighter.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="../js/syntaxHighlighter.js"></script>
+    <script type="text/javascript" src="../js/shBrushJScript.js"></script>
+    <script src="../js/syntaxHighlighter.js" type="text/javascript"></script>
+    <script src="../js/shAutoloader.js" type="text/javascript"></script>
+    <script src="../js/shBrushJScript.js" type="text/javascript"></script>
+
+</head>
+<body>
+<input type="button" onclick="InlineWorkerDemo.startWorker()" value="Start the worker"><br/>
+<input type="button" onclick="InlineWorkerDemo.stopWorker()" value="Stop the worker"><br/>
+<br/>
+<a href="chrome://blob-internals/" target="_blank">chrome://blob-internals/</a>
+
+<div id="log"></div>
+
+<script id="worker1" type="javascript/worker">
+    // This script won't be parsed by JS engines because its type is javascript/worker.
+    self.onmessage = function(e) {
+        self.postMessage({
+            'message': 'Message #' + e.data.counter + ' from worker.',
+            'timestamp' : Date.now()
+        });
+    };
+    // Rest of your worker code goes here.
+</script>
+
+<script>
+
+    InlineWorkerDemo = function() {
+
+        // Dummy counter for messaging
+        var counter = 0;
+
+        // The blobBuilder object
+        var blobBuilder;
+
+        // Our worker object
+        var worker
+
+        // The demo timer
+        var timer;
+
+        function log(msg) {
+            // Use a fragment: browser will only render/reflow once.
+            var fragment = document.createDocumentFragment();
+            fragment.appendChild(document.createTextNode(msg));
+            fragment.appendChild(document.createElement('br'));
+
+            document.querySelector("#log").appendChild(fragment);
+        }
+
+        function executeWorker() {
+
+            // send message to the worker
+            worker.postMessage({'counter' : ++counter});
+
+            // Send message to the worker every second
+            timer = setTimeout(executeWorker, 1000);
+        }
+
+        return{
+
+            /**
+             * Init the inline worker
+             */
+            startWorker: function() {
+
+                var tmpObj;
+
+                // create the blob object
+                blobBuilder = new WebKitBlobBuilder();
+
+                // Get the contnet of the worker.
+                blobBuilder.append(document.querySelector('#worker1').textContent);
+
+                // for debug purposes
+                tmpObj = webkitURL.createObjectURL(blobBuilder.getBlob());
+
+                // create the worker from the blob
+                worker = new Worker(tmpObj);
+                log('Creating Worker: '+ tmpObj);
+
+                // Implement the onmessage for the main page
+                worker.onmessage = function(e) {
+                    log("Received: " + JSON.stringify(e.data));
+                };
+
+                // Run the worker code
+                executeWorker();
+            },
+
+            /**
+             * terminate the worker
+             */
+            stopWorker: function() {
+                if (!worker) {
+                    return;
+                }
+                clearTimeout(timer);
+                worker.terminate();
+                webkitURL.revokeObjectURL(blobBuilder.getBlob());
+                worker = undefined;
+
+            }
+        };
+    }();
+
+
+</script>
+</body>
+
+</html>

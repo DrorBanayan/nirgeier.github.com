@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta charset="UTF-8"></meta>
+		<meta name="generator" content="JsDoc Toolkit"></meta>
+		<title>FilesManager | JsDoc Reference</title>
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
+		<meta name="mobileoptimized" content="0"></meta>
+	
+		<link rel="stylesheet" href="../css/all.css" media="all"></link>
+		<link rel="stylesheet" href="../css/handheld.css" media="only screen and (max-width: 660px)"></link>
+		<link rel="stylesheet" href="../css/handheld.css" media="handheld"></link>
+		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
+
+		<!-- Syntax Highlighting -->
+		<link rel="stylesheet" href="../css/shCore.css" media="all"></link>
+		<link rel="stylesheet" href="../css/shThemeDefault.css" media="all"></link>
+		<script src="../javascript/shCore.js"></script>
+		<script src="../javascript/shBrushJScript.js"></script>
+
+		<script src="../javascript/all.js"></script>
+		<!--[if lt IE 9]>
+			<script src="../javascript/html5.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+<div class="index">
+	<div class="menu">
+		<div class="indexLinks">
+			<a href="../index.html">Classes</a>
+			<a href="../files.html">Files</a>
+		</div>
+	
+		<h2 class="heading1">Classes</h2>
+		
+		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
+		
+		<nav>
+			<ul class="classList" id="ClassList">
+				
+					<li><a href="../symbols/_global_.html">_global_</a></li>
+				
+					<li><a href="../symbols/FilesManager.html">FilesManager</a></li>
+				
+			</ul>
+		</nav>
+	</div>
+	<div class="fineprint" style="clear:both">
+		
+		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
+		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
+		Generated on: 2011-8-22 10:48
+	</div>
+</div>
+
+<div class="index indexStatic"></div>
+
+<div class="content">
+	<div class="innerContent">
+		<h1 class="classTitle">
+			
+			Class <span>FilesManager</span>
+		</h1>
+		
+		<div class="intro">
+			<p class="description summary">
+				This file will contain the FileSystem demo API + Logic<br/>
+			</p>
+				
+			
+				<ul class="summary">
+					
+					
+					
+						<li>Defined in: <a href="../symbols/src/C__work_workspace_Listen.js_jsdoc_srcFiles_filesManager.js.html">filesManager.js</a></li>
+					
+						
+				</ul>
+			
+		</div>
+		
+		
+			<div class="props">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class FilesManager.">
+					<caption class="sectionTitle">Class Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Constructor Attributes</th>
+							<th scope="col">Constructor Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription" >
+								<div class="fixedFont">
+									<b><a href="../symbols/FilesManager.html#constructor">FilesManager</a></b>()
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		
+		
+		
+			
+			
+				<div class="props">
+					<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class FilesManager.">
+						<caption class="sectionTitle">Field Summary</caption>
+						
+						<thead>
+							<tr>
+								<th scope="col">Field Attributes</th>
+								<th scope="col">Field Name and Description</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							
+								<tr>
+									<td class="attributes">&lt;static&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">
+										FilesManager.<b><a href="../symbols/FilesManager.html#.debug">debug</a></b>
+										</div>
+										<div class="description">This code is for the lecture and for debugging.</div>
+									</td>
+								</tr>
+							
+								<tr>
+									<td class="attributes">&lt;private&gt; &lt;inner&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">
+										<b><a href="../symbols/FilesManager.html#-files">files</a></b>
+										</div>
+										<div class="description">The array fo files that were found in the given directory</div>
+									</td>
+								</tr>
+							
+								<tr>
+									<td class="attributes">&lt;private&gt; &lt;inner&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">
+										<b><a href="../symbols/FilesManager.html#-settings">settings</a></b>
+										</div>
+										<div class="description">Object with the different settings/defaults that the user can change</div>
+									</td>
+								</tr>
+							
+								<tr>
+									<td class="attributes">&lt;private&gt; &lt;inner&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">
+										<b><a href="../symbols/FilesManager.html#-tree">tree</a></b>
+										</div>
+										<div class="description">The jQuery tree plugin to display the file as tree</div>
+									</td>
+								</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			
+			
+			
+		
+<!--
+#### METHODS SUMMARY
+-->
+		
+			
+			
+			<div class="props">
+				<h2 class="sectionTitle">Method Summary</h2>
+				
+				
+					<table class="summaryTable" id="MethodsList" cellspacing="0" summary="A summary of the methods documented in the class FilesManager.">
+						<thead>
+							<tr>
+								<th scope="col">Method Attributes</th>
+								<th scope="col">Method Name and Description</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							
+							
+								<tr
+									 class='item0'
+								>
+									<td class="attributes">&lt;static&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">FilesManager.<b><a href="../symbols/FilesManager.html#.getFiles">getFiles</a></b>()
+										</div>
+										<div class="description">Get the list of files in the directory</div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item1'
+								>
+									<td class="attributes">&lt;static&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">FilesManager.<b><a href="../symbols/FilesManager.html#.init">init</a></b>(selector)
+										</div>
+										<div class="description">Init the FilesManager.</div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item2'
+								>
+									<td class="attributes">&lt;inner&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/FilesManager.html#-processDirectory">processDirectory</a></b>()
+										</div>
+										<div class="description">Read the files in the choosen directory</div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item3'
+								>
+									<td class="attributes">&lt;private&gt; &lt;inner&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/FilesManager.html#-setBindings">setBindings</a></b>()
+										</div>
+										<div class="description">This method will set up the events, listeners and any other bindings that we might need later on in our code</div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item4'
+								>
+									<td class="attributes">&lt;static&gt; &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">FilesManager.<b><a href="../symbols/FilesManager.html#.Tree">Tree</a></b>(selector)
+										</div>
+										<div class="description"></div>
+									</td>
+								</tr>
+							
+						</tbody>
+					</table>
+				
+			
+				
+			</div>
+		
+		
+<!--
+#### EVENTS SUMMARY
+-->
+		
+<!--
+#### CONSTRUCTOR DETAILS
+-->
+		
+			<div class="details props">
+				<div class="innerProps">
+					<h2 class="sectionTitle" id="constructor">
+						Class Detail
+					</h2>
+					
+					<div class="fixedFont">
+						<b>FilesManager</b>()
+					</div>
+					
+					<div class="description">
+						
+						<br /><i>Author: </i>Nir Geier<br/><br/>The code is under no license.<br/>You are free to do whatever you want with it.<br/>.
+					</div>
+					
+					
+				
+					
+					
+					
+				</div>
+			</div>
+		
+<!--
+#### FIELD DETAILS
+-->
+		
+			<div class="details props">
+				<div class="innerProps">
+					<h2 class="sectionTitle">
+						Field Detail
+					</h2>
+					
+					
+						<div class="fixedFont heading" id=".debug">
+							<span class='lighter'>
+							&lt;static&gt; 
+							</span>
+							
+							
+							
+							<span class="light">FilesManager.</span><b>debug</b>							
+						</div>
+						
+						<div class="description">
+							This code is for the lecture and for debugging. The is no real need for it
+							
+								<br />
+								<i>Defined in: </i> <a href="../symbols/src/C__work_workspace_Listen.js_jsdoc_srcFiles_filesManagerDebug.js.html">filesManagerDebug.js</a>.
+							
+							
+							
+						</div>
+						
+						
+							
+						
+						<div class="hr"></div>
+					
+						<div class="fixedFont heading" id="-files">
+							<span class='lighter'>
+							&lt;private&gt; &lt;inner&gt; 
+							</span>
+							
+							<span class="light">{type}</span>
+							
+							<b>files</b>							
+						</div>
+						
+						<div class="description">
+							The array fo files that were found in the given directory
+							
+							
+							
+						</div>
+						
+						
+							
+						
+						<div class="hr"></div>
+					
+						<div class="fixedFont heading" id="-settings">
+							<span class='lighter'>
+							&lt;private&gt; &lt;inner&gt; 
+							</span>
+							
+							
+							
+							<b>settings</b>							
+						</div>
+						
+						<div class="description">
+							Object with the different settings/defaults that the user can change
+							
+							
+							
+						</div>
+						
+						
+							
+						
+						<div class="hr"></div>
+					
+						<div class="fixedFont heading" id="-tree">
+							<span class='lighter'>
+							&lt;private&gt; &lt;inner&gt; 
+							</span>
+							
+							
+							
+							<b>tree</b>							
+						</div>
+						
+						<div class="description">
+							The jQuery tree plugin to display the file as tree
+							
+							
+							
+						</div>
+						
+						
+							
+						
+						
+					
+				</div>
+			</div>
+		
+<!--
+#### METHOD DETAILS
+-->		
+		
+			<div class="details props">
+				<div class="innerProps">
+					<h2 class="sectionTitle">
+						Method Detail
+					</h2>
+					
+					<ul class="methodDetail" id="MethodDetail">
+						
+						
+							<li 
+								 class='item0'
+							>
+								<div class="fixedFont heading" id=".getFiles">
+									<span class='lighter'>
+									&lt;static&gt; 
+									</span>
+									
+									<span class="light">{Array}</span>
+									
+									<span class="light">FilesManager.</span><b>getFiles</b>()
+								</div>
+								
+								<div class="description">
+									Get the list of files in the directory
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+								
+								
+									<dl class="detailList nomargin">
+									
+										
+										
+										
+										
+										
+										
+										
+											<dt class="heading">Returns:</dt>
+											
+												<dd><span class="light fixedFont">{Array}</span> files   the list of the current processed files in the chosen directory</dd>
+											
+										
+										
+										
+										
+										
+									
+									</dl>
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item1'
+							>
+								<div class="fixedFont heading" id=".init">
+									<span class='lighter'>
+									&lt;static&gt; 
+									</span>
+									
+									
+									
+									<span class="light">FilesManager.</span><b>init</b>(selector)
+								</div>
+								
+								<div class="description">
+									Init the FilesManager. <br/>Here we will call the binding method and will init our tree
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{String [optional]}</span> <b>selector</b>
+												<i>Optional</i>
+											</dt>
+											<dd>The selector of the dom element to display the results inside</dd>
+										
+									</dl>
+								
+								
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item2'
+							>
+								<div class="fixedFont heading" id="-processDirectory">
+									<span class='lighter'>
+									&lt;inner&gt; 
+									</span>
+									
+									
+									
+									<b>processDirectory</b>()
+								</div>
+								
+								<div class="description">
+									Read the files in the choosen directory
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+								
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item3'
+							>
+								<div class="fixedFont heading" id="-setBindings">
+									<span class='lighter'>
+									&lt;private&gt; &lt;inner&gt; 
+									</span>
+									
+									
+									
+									<b>setBindings</b>()
+								</div>
+								
+								<div class="description">
+									This method will set up the events, listeners and any other bindings that we might need later on in our code
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+								
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item4'
+							>
+								<div class="fixedFont heading" id=".Tree">
+									<span class='lighter'>
+									&lt;static&gt; 
+									</span>
+									
+									
+									
+									<span class="light">FilesManager.</span><b>Tree</b>(selector)
+								</div>
+								
+								<div class="description">
+									
+									
+									
+										<br />
+										<i>Defined in: </i> <a href="../symbols/src/C__work_workspace_Listen.js_jsdoc_srcFiles_filesManagerTree.js.html">filesManagerTree.js</a>.
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<b>selector</b>
+												
+											</dt>
+											<dd>The selector in our demo is UL whicch the files will be added to it as LI entries</dd>
+										
+									</dl>
+								
+								
+								
+								
+							</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+		
+<!--
+#### EVENT DETAILS
+-->		
+		
+	</div>
+</div>
+		<script type="text/javascript">
+			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660);
+			codeview.classFilter.Init();
+			
+			// Syntax Highlighting
+			SyntaxHighlighter.all();
+		</script>
+	</body>
+</html>
+

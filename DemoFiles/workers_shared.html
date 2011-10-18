@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<input type="button" value="Send message to New Shared Worker" onclick="SharedWorkerDemo.postMessageToNewWorker()"><br/>
+<br/>
+Send message to the selected Shared Worker
+<select id="workers1" onchange="SharedWorkerDemo.postMessage(this.value)">
+
+</select>
+<br/>
+<br/>
+"Kill" the selected Shared Worker
+<select id="workers2" onchange="SharedWorkerDemo.stopWorker(this.value)">
+
+</select>
+
+<div id="log"></div>
+
+<script>
+
+    SharedWorkerDemo = function() {
+
+        // Our worker object
+        var workers = [];
+
+        function log(msg) {
+            // Use a fragment: browser will only render/reflow once.
+            var fragment = document.createDocumentFragment();
+            fragment.appendChild(document.createTextNode(msg));
+            fragment.appendChild(document.createElement('br'));
+
+            document.querySelector("#log").appendChild(fragment);
+        }
+
+        /**
+         * Create the shared worker
+         */
+        function initSharedWorker() {
+
+            var worker, index;
+
+            worker = new SharedWorker("js/sharedWorker.js");
+
+            // add listener instead of onmessage in dedicated workers
+            worker.port.addEventListener("message",
+                    function(e) {
+                        log("Received: " + JSON.stringify(e.data));
+                    }, false);
+
+            // "open" the communication channel
+            worker.port.start();
+
+            // Add the worker to our Queue
+            workers.push(worker);
+
+            // Add the new worker to the list
+            index = workers.length - 1;
+            document.querySelector("#workers1").appendChild(new Option('Worker #' + index, index));
+            document.querySelector("#workers2").appendChild(new Option('Worker #' + index, index));
+
+        }
+
+        return{
+
+            /**
+             * Get the list of the active workers
+             */
+            getWorkers: function() {
+                return workers;
+            },
+
+            /**
+             * Send message to the shared worker
+             */
+            postMessageToNewWorker: function() {
+                initSharedWorker();
+
+                // post a message to the shared web worker
+                workers[workers.length - 1].port.postMessage({message: 'Html5Fest', port: workers.length - 1});
+            },
+
+            postMessage: function(index) {
+                console.log(workers[index]);
+                workers[index].port.postMessage({message: 'Html5Fest', port: index});
+            },
+
+            stopWorker:function(index) {
+                workers[index].port.close();
+            }
+        };
+    }();
+
+
+</script>
+</body>
+</html>
