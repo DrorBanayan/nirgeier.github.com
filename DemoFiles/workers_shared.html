@@ -2,7 +2,8 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title></title>
+    <title>Shared worker demo</title>
+    <link rel="stylesheet" href="../style/demo.css">
 </head>
 <body>
 
@@ -44,7 +45,7 @@ Send message to the selected Shared Worker
 
             var worker, index;
 
-            worker = new SharedWorker("js/sharedWorker.js");
+            worker = new SharedWorker("../js/sharedWorker.js");
 
             // add listener instead of onmessage in dedicated workers
             worker.port.addEventListener("message",
@@ -85,8 +86,8 @@ Send message to the selected Shared Worker
             },
 
             postMessage: function(index) {
-                console.log(workers[index]);
-                workers[index].port.postMessage({message: 'Html5Fest', port: index});
+                log(JSON.stringify(workers[index]));
+                workers[index].port.postMessage({message: 'Message from worker', port: index});
             },
 
             stopWorker:function(index) {

@@ -1,0 +1,31 @@
+body {
+    padding: 25px;
+    margin: 0 auto;
+    overflow: auto;
+    font-family: 'Crimson Text', Times, 'Times New Roman', serif;
+    font-family: Arial;
+    font-size: 20px;
+    background: #fff;
+    color: #222;
+    width: 960px;
+    height: 100%;
+    background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 1000, from(rgba(245, 245, 245, 1.0)), to(rgba(100, 100, 100, 1.0)));
+    background-image: -moz-radial-gradient(50% 50% 90deg, rgba(245, 245, 245, 1.0) 0%, rgba(100, 100, 100, 1.0) 100%);
+}
+
+input[type=button] {
+    background-color: #003ED7;
+    text-shadow: #EEE 0 0 2px;
+    -webkit-transition: all 0.3s linear;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 0.5em 3em;
+    color: #EEE;
+    text-decoration: none;
+    font-weight: bold;
+    border-color: #003E9B;
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0.25)), color-stop(1, rgba(255, 255, 255, 0.05)));
+    text-shadow: #444 0 -1px 1px;
+    cursor: pointer;
+}

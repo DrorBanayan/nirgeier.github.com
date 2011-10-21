@@ -1,6 +1,8 @@
 // count active connections
 var connections = 0;
 
+var uniqeId = Date.now();
+
 // Instead of a single message processing function,
 // the code here attaches multiple event listeners
 self.addEventListener("connect", function (e) {
@@ -11,7 +13,18 @@ self.addEventListener("connect", function (e) {
     connections++;
 
     port.addEventListener("message", function (e) {
-        port.postMessage("Message: " + JSON.stringify(e.data) + ", (Port #" + connections + ")");
+        var message = [];
+
+        // Performance wise...
+        message.push("Message: ");
+        message.push(JSON.stringify(e.data));
+        message.push(", (uniqeId #");
+        message.push(uniqeId);
+        message.push(", Connections:");
+        message.push(connections);
+
+        // Send the message
+        port.postMessage(message.join(''));
     }, false);
 
     port.start();

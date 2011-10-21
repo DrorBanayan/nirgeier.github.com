@@ -1,19 +1,13 @@
 <html>
 <head>
-    <link href="../style/syntaxHighlighter.css" rel="stylesheet" type="text/css"/>
-
-    <script type="text/javascript" src="../js/syntaxHighlighter.js"></script>
-    <script type="text/javascript" src="../js/shBrushJScript.js"></script>
-    <script src="../js/syntaxHighlighter.js" type="text/javascript"></script>
-    <script src="../js/shAutoloader.js" type="text/javascript"></script>
-    <script src="../js/shBrushJScript.js" type="text/javascript"></script>
-
+    <link rel="stylesheet" href="../style/demo.css">
 </head>
 <body>
-<input type="button" onclick="InlineWorkerDemo.startWorker()" value="Start the worker"><br/>
-<input type="button" onclick="InlineWorkerDemo.stopWorker()" value="Stop the worker"><br/>
+<input type="button" onclick="InlineWorkerDemo.startWorker()" value="Start the worker">
+<input type="button" onclick="InlineWorkerDemo.stopWorker()" value="Stop the worker">
+<a href="chrome://blob-internals/">chrome://blob-internals</a>
 <br/>
-<a href="chrome://blob-internals/" target="_blank">chrome://blob-internals/</a>
+<br/>
 
 <div id="log"></div>
 
@@ -44,6 +38,9 @@
         // The demo timer
         var timer;
 
+        // The blob url that we that worker creates
+        var blobURL;
+
         function log(msg) {
             // Use a fragment: browser will only render/reflow once.
             var fragment = document.createDocumentFragment();
@@ -69,8 +66,6 @@
              */
             startWorker: function() {
 
-                var tmpObj;
-
                 // create the blob object
                 blobBuilder = new WebKitBlobBuilder();
 
@@ -78,11 +73,11 @@
                 blobBuilder.append(document.querySelector('#worker1').textContent);
 
                 // for debug purposes
-                tmpObj = webkitURL.createObjectURL(blobBuilder.getBlob());
+                blobURL = webkitURL.createObjectURL(blobBuilder.getBlob());
 
                 // create the worker from the blob
-                worker = new Worker(tmpObj);
-                log('Creating Worker: '+ tmpObj);
+                worker = new Worker(blobURL);
+                log('Creating Worker: ' + blobURL);
 
                 // Implement the onmessage for the main page
                 worker.onmessage = function(e) {
@@ -102,7 +97,7 @@
                 }
                 clearTimeout(timer);
                 worker.terminate();
-                webkitURL.revokeObjectURL(blobBuilder.getBlob());
+                webkitURL.revokeObjectURL(blobURL);
                 worker = undefined;
 
             }

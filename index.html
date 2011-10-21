@@ -18,15 +18,19 @@
     <!--link href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600,bold' rel='stylesheet' type='text/css'-->
     <link rel="stylesheet" href="style/main.css">
     <link href="style/syntaxHighlighter.css" rel="stylesheet" type="text/css"/>
-
     <script src="js/syntaxHighlighter.js" type="text/javascript"></script>
 </head>
 
 <body>
 
+<div class="toc">
+    <div class="current"></div>
+    /
+    <div class="total"></div>
+</div>
+
 <!-- Any section element inside of this container is displayed as a slide -->
 <div id="main">
-
 <section>
     <div class="relative">
         <h2 class="workers color1">WebWorkers</h2>
@@ -35,6 +39,7 @@
             <li>Inline Workers</li>
             <li>Shared Workers</li>
         </ol>
+        <br/>
 
         <h2 class="files color2">FileAPI</h2>
         <ol class="files color2">
@@ -47,125 +52,108 @@
 </section>
 
 <section>
-    <h1 class="color1 centered">
+    <div class="content">
+        <h3 class="color1">HTML4 (Current)</h3>
+        <br/>
+        <ul data-list="buildUpList">
+            <li>No threads (single thread, sequence)</li>
+            <li>Workarounds : asynchronously code.</li>
+            <ul class="innerList">
+                <li><span class="highlight">ajax</span> (XHR/XHR2)/ jsonp</li>
+                <li><span class="highlight">events</span></li>
+                <li class="strike">setInteval</span> (Not recommended, Bad coding !!!)</li>
+                <li><span class="highlight">setTimeout</span></li>
+            </ul>
+        </ul>
+    </div>
+    <h1 class="watermarkedHidden">
         Web Workers
-        <img src="images/workers.gif">
+        <img class="img" src="images/workers.gif">
     </h1>
 </section>
 
 <section>
-    <h3 class="color1">"Old" behaviour</h3>
-    <ul class="color3">
-        <li>No threads (single thread, sequence)</li>
-        <li>Workarounds : asynchronously code.</li>
-        <ul class="innerList">
-            <li>ajax (XHR/XHR2)/ jsonp</li>
-            <li>events</li>
-            <li class="strike">setInteval (Not recommended, Bad coding !!!)</li>
-            <li>setTimeout</li>
-            <li>...</li>
-        </ul>
-    </ul>
-</section>
+    <h3 class="color1">Workers</h3>
+    <ul data-list="buildUpList">
+        <li>Workers code is written in a <span class="highlight">**separate</span> JS file.</li>
+        <li>Workers operate <span class="highlight">independently</span> of the browser UI thread.</li>
+        <li>Workers run <span class="highlight">non-blocking scripts parallel</span> to the main thread.</li>
+        <li>When creating worker - new thread is created and source is downloaded
+            <span class="highlight">asynchronously</span>.
+            If source not found -> 404 (silent failure)
+        </li>
+        <li>Workers can only pass data in and out of a thread through the
+            <span class="highlight">postMessage()</span> API and
+            <span class="highlight">onMessage</span> Event.
+        </li>
 
-<section>
-    <h3 class="color1">"New" : Workers (1)</h3>
-    <ul class="color3">
-        <li>Workers operate <b>independently</b> of the browser UI thread.</li>
-        <li>Workers run non-blocking scripts <b>parallel</b> to the main thread.</li>
-        <li>The Workers API is originally based on the now deprecated Gears WorkerPool API</li>
-        <li>Creates an OS level script execution environment that is capable of scaling across multiple cores when
-            present
-        </li>
-        <li>Workers are not intended to be used in large numbers.too many workers will cause a loss of response in
-            the main window.
-        </li>
-        <li>If source not found -> 404 = silent failure</li>
+        <span class="notes">
+            <ul>
+                <li>The Workers API is originally based on the now deprecated Gears WorkerPool API</li>
+                <li>Workers are not intended to be used in large numbers.
+                    too many workers will cause a loss of response in the main window.
+                </li>
+            </ul>
 
-    </ul>
-</section>
-
-<section>
-    <h3 class="color1">"New" : Workers (2)</h3>
-    <ul class="color3">
-        <li>Workers code is written in a <b>separate</b> JS file.</li>
-        <li>When creating worker - new thread is created and source is downloaded asynchronously.</li>
-        <li>Workers code is written in a <b>separate</b> JS file.</li>
-        <li>Web workers operate independently of the browser UI thread.</li>
-        <li>Workers allow web applications to run non-blocking scripts parallel to the main page.</li>
-        <li>When creating worker - new thread is created and source is downloaded asynchronously.</li>
-        <li>Workers can only pass data in and out of a thread through the <code>postMessage()</code> API and
-            onMessage Event.
-        </li>
-        <li>The Workers API is originally based on the now deprecated Gears WorkerPool API</li>
-        <li>Creates an OS level script execution environment that is capable of scaling across multiple cores when
-            present
-        </li>
-        <li>Workers are not intended to be used in large numbers.too many workers will cause a loss of response in
-            the main window.
-        </li>
-        <li>If source not found -> 404 = silent failure</li>
+        </span>
 
     </ul>
 </section>
 
 <section>
-    <h3>Workers Environment (1)</h3>
+    <h3 class="color1">Workers Environment (1)</h3>
 
-    <p class="dark">Features Available to Workers:</p>
-    <ul>
-        <li>The <span class="code">navigator</span> object</li>
-        <li>The <span class="code">location</span> object (read-only)</li>
-        <li><span class="code">XMLHttpRequest</span> (XHR/XHR2)</li>
-        <li><span class="code">setTimeout()/clearTimeout()</span></li>
-        <li><span class="code">setInterval()/clearInterval()</span></li>
-        <li>The <span class="code">Application Cache</span></li>
-        <li><span class="code">importScripts()</span> (load external scripts to worker env)</li>
+    <p class="dark">Worker can use any of the following:</p>
+
+    <ul class="moreItems" data-list="buildUpList">
+        <li>The <span class="highlight">navigator</span> object</li>
+        <li>The <span class="highlight">location</span> object (read-only)</li>
+        <li><span class="highlight">XMLHttpRequest</span> (XHR/XHR2)</li>
+        <li><span class="highlight">setTimeout()/clearTimeout()</span></li>
+        <li><span class="highlight strike">setInterval()/clearInterval()</span></li>
+        <li>The <span class="highlight">Application Cache</span></li>
+        <li><span class="highlight">importScripts()</span> (load external scripts to worker env)</li>
     </ul>
 </section>
 
 <section>
-    <h3>Workers Environment (2)</h3>
+    <h3 class="color1">Workers Environment (2)</h3>
 
-    <p class="dark">Features Un-Available to Workers:</p>
-
-    <ul>
-        <li>Workers can only pass data in and out of a thread through the <code>postMessage()</code> API and
-            onMessage Event.
+    <p class="dark">Workers don't have access to the following:</p>
+    <ul data-list="buildUpList">
+        <li>The <span class="highlight"><b>DOM</b></span></li>
+        <li>The <span class="highlight">window</span> object
+            (No access to variables or functions on main page)
         </li>
-
-        <li>The <span class="code"><b>DOM</b></span></li>
-        <li>The <span class="code">window</span> object<br/>
-            = No access global variables or functions within the page
+        <li>The <span class="highlight">document</span> object</li>
+        <li>The <span class="highlight">parent</span> object</li>
+        <li class="color1">Workers can only pass data in and out of a thread through the
+            <span class="highlight">postMessage()</span> API and
+            <span class="highlight">onMessage</span> Event.
         </li>
-        <li>The <span class="code">document</span> object</li>
-        <li>The <span class="code">parent</span> object</li>
 
     </ul>
 </section>
 
 <section>
-    <h3>Worker Code (Main Window)</h3>
+    <h3 class="color1">Worker Code (Main Window)</h3>
 
-        <pre class="brush: javascript;">
-        var worker;
-
+        <pre class="brush: javascript; highlight: [21,24]">
         function initWorker(){
 
             // Creating the worker
-            worker = new Worker( 'path_to_worker_file' );
+            var worker = new Worker( 'path_to_worker_file' );
 
-            // Communicating With a Dedicated Web Worker
-            // several alternative to "register" the onmessage
+            // Communicating With a Dedicated Web Worker several alternative to "register" the onmessage
             worker.onmessage = function( e ) { ... };
 
             // same as above: using DOM2 events (addEventListener)
             worker.addEventListener('message', function(e) { ... }, false);
 
             // The handler event is passed an object with 3 properties:
-            // filename: the name of the script which caused the error;
-            // lineno  : the line number where the error occurred; and
-            // message : a description of the error.
+            //     filename: the name of the script which caused the error;
+            //     lineno  : the line number where the error occurred; and
+            //     message : a description of the error.
             worker.onerror = function(e) {
                 console.log("Error: ", e.filename, e.lineno, e.message);
             };
@@ -184,14 +172,12 @@
 </section>
 
 <section>
-    <h3>Worker Code (Worker file)</h3>
+    <h3 class="color1">Worker Code (Worker file)</h3>
 
             <pre class="brush: javascript;">
-            // In the worker file
-            // we need to implement the onmessage function
+            // In the worker filewe need to implement the onmessage function
 
-            // Web Workers can also communicate between each others using
-            // Message channels.
+            // Web Workers can also communicate between each others using Message channels.
             // http://www.w3.org/TR/webmessaging/#messagechannel
                 
             // this, self are both references to the worker global scope
@@ -199,14 +185,16 @@
 
             self.onmessage = function(e) {
                 switch(e.data){
-                case "START":
-                    run();
+                case "start":
+                    run(); // here we will have postMessage(...)
                     break;
-                case "STOP":
+
+                case "stop":
                     // 1 – from the main calling page by calling the terminate()
                     // 2 – from the worker itself via the close()
                     self.close();
                     break;
+
                 default:
                   ...
                   break;
@@ -217,34 +205,71 @@
 </section>
 
 <section>
-    <h3> Demo: Dedicated Web Worker</h3>
+    <h3 class="centered"> Demo: Dedicated Web Worker</h3>
 </section>
 
 <section>
     <br/>
 
-    <h3>Inline Workers</h3>
-
-    <p>
-        Create your worker script on the fly, or create a self-contained page
-        <span class="code">without</span> having to create separate worker file.
-        <br/>
-        <span class="code">"Inline"</span> your worker in the same HTML file as
-        your main logic by creating a <span class="code">BlobBuilder</span> and
-        appending the worker code as a string.
-        <br/><br/>
-        This is done using Blob URL. Blob URLs are unique and last until the document is unloaded.
-        In Chrome, there's a nice page to view all of the created blob URLs:
-        <a target="_blank" href="chrome://blob-internals/">chrome://blob-internals</a>
-    </p>
+    <h3 class="color1">Inline Workers</h3>
+    <ul data-list="buildUpList">
+        <li>Create your worker script on the <span class="highlight">fly</span>, or create a self-contained page
+            <span class="highlight">without</span> having to create <span class="highlight">**separate</span> worker
+            file.
+        </li>
+        <li>
+            <span class="highlight">"Inline"</span> your worker in the same HTML file as your main logic by<br/>
+            creating a <span class="highlight">BlobBuilder</span> and appending the worker code as a string.
+        </li>
+        <li>
+            This is done using <span class="highlight">Blob URL</span>. Blob URLs are unique and last until the document
+            is unloaded.
+            In Chrome, there's a nice page to view all of the created blob URLs:
+            <a target="_blank" href="chrome://blob-internals/">chrome://blob-internals</a>
+        </li>
+    </ul>
 </section>
 
 <section>
-    <h3>Inline Workers (Code)</h3>
-        <pre class="brush: javascript;">
+    <h3 class="color1">Inline Workers (Code #1)</h3>
+    <pre class="brush: html;highlight: [2,3]; ruler: true;">
+        ...
+        <!-- This is the "hack". set the type to text or any unhandled type and the page will not handle it as javascript -->
+        &lt;script id=&quot;worker1&quot; type=&quot;text/plain&quot;&gt;
+            onmessage = function(e) { ... };
+        &lt;/script&gt;
+        </pre>
+        <pre class="brush: javascript;first-line: 6; highlight: [10,11,15];">
+            ...
+            // BlobBuilder Prefix based upon browser: WebKitBlobBuilder || MozBlobBuilder
+            var blobBuilder = new /*WebKit*/BlobBuilder();
+
+            // "Grab" the code we defined in lines 4-5 (as text) and set it as the worker code by appending it to the blob
+            blobBuilder.append(document.querySelector('#worker1').textContent);
+
+            // The next method creates a simple URL string which can be used to reference data stored in a DOM File or Blob object.
+            // Obtain a blob URL reference to our worker 'file'. [Note: window.webkitURL.createObjectURL() in Chrome]
+            var worker = new Worker( window.URL.createObjectURL(blobBuilder.getBlob()) );
+
+            worker.onmessage = function(e) { ... };
+
+            worker.postMessage();
+
+            // when not needed nay more: [Chrome: webkitURL.revokeObjectURL()]
+            window.URL.revokeObjectURL(blobURL);
+            ...
+        </pre>
+
+</section>
+<section>
+    <h3 class="color1">Inline Workers (Code #2)</h3>
+        <pre class="brush: javascript;highlight: [4,5,6,13];">
 
             // Chrome: window.WebKitBlobBuilder, FF: window.MozBlobBuilder
             var blobBuilder = new BlobBuilder();
+
+            // Same as prevoius example but this time simply define the code as inline text
+            // blobBuilder.append(document.querySelector('#worker1').textContent);
             blobBuilder.append("onmessage = function(e) { postMessage( 'msg1' ); }");
 
             // The next method creates a simple URL string which can be used to
@@ -255,6 +280,7 @@
             var blobURL = window.URL.createObjectURL(blobBuilder.getBlob());
 
             var worker = new Worker(blobURL);
+
             worker.onmessage = function(e) {
               // e.data == 'msg1'
             };
@@ -270,37 +296,42 @@
 </section>
 
 <section>
-    <h3><a href="DemoFiles/workers_inline.html" target="_blank">Demo: Inline Web Worker</a></h3>
+    <h3 class="centered">
+        <a href="DemoFiles/workers_inline.html" target="_blank">Demo: Inline Web Worker</a>
+    </h3>
 
 </section>
 
 <section>
-    <h3>Shared Web Worker</h3>
+    <h3 class="color1">Shared Web Worker</h3>
 
-    <p>
-        Shared workers, once created <span class="code">any script</span> running in the same origin can obtain a
-        reference to that worker and communicate with it.
-        <br/><br/>
-        Unlike Dedicated web workers, SharedWorkers communicate via
-        a <span class="code">port</span> object and attach a message event handler. <br/>
-        <br/>
-        Before using the first <span class="code">postMessage()</span>
-        <br/>
-        you must call the port’s <span class="code">start()</span>.
-        <br/>
-        <br/>
-                
+    <ul data-list="buildUpList">
+        <li>
+            Shared workers, once created <span class="highlight">any script</span> running in the same origin can obtain
+            a reference to that worker and communicate with it.
+        </li>
+        <li>
+            Unlike Dedicated web workers, SharedWorkers communicate via a
+            <span class="highlight">port</span> object and attach a message event handler. <br/>
+        </li>
+        <li>
+            Before using the first <span class="highlight">postMessage()</span>
+            you must call the port’s <span class="highlight">start()</span>.
+        </li>
+        <li>
+
         <span class="important">
-            Unlike dedicated worker shared worker will live until <span class="code">port.close()</span>
+            Unlike dedicated worker shared worker will live until <span class="highlight">port.close()</span>
             will be called, so its important to "release" them
         </span>
 
-    </p>
+        </li>
+    </ul>
 </section>
 
 <section>
     <h3>Shared Web Worker (Main page)</h3>
-    <pre class="brush: javascript;">
+    <pre class="brush: javascript; highlight: [10,13]">
         // Creating a Shared Web Worker
         var worker = new SharedWorker(...);
 
@@ -319,9 +350,9 @@
 </section>
 
 <section>
-    <h3>Shared Web Worker ( sharedWorker.js )</h3>
+    <h3 class="color1">Shared Web Worker ( sharedWorker.js )</h3>
 
-    <pre class="brush: javascript;">
+    <pre class="brush: javascript;  highlight: [6, 8, 9, 13, 19]">
         // count active connections
         var connections = 0;
 
@@ -329,8 +360,7 @@
         // the code here attaches multiple event listeners
         self.addEventListener("connect", function (e) {
 
-            // On each connection the port is always the first
-            // (and only) port in the event ports list
+            // On each connection the port is always the first (and only) port in the event ports list
             var port = e.ports[0];
             connections++;
 
@@ -345,25 +375,28 @@
         }, false);
     </pre>
     <br/>
-    <br/>
     <span class="important">
         Shared Workers can communicate between browser windows or tabs using the
-        <span class="code">window.postMessage()</span>
+        <span class="highlight">window.postMessage()</span>
     </span>
     <br/>
 
 </section>
 
 <section>
-    <h3><a href="DemoFiles/workers_shared.html" target="_blank">Demo: Shared Web Worker</a></h3>
+    <h3 class="centered">
+        <a href="DemoFiles/workers_shared.html" target="_blank">Demo: Shared Web Worker</a>
+    </h3>
 </section>
 
 <section>
-    <h1 class="color2">File API</h1>
+    <h1 class="color2 centered">
+         <img src="images/fileAPI_128.png" align="absmiddle"> File API
+    </h1>
 </section>
 
 <section>
-    <h2>File API features</h2>
+    <h3 class="fileAPI">File API features</h3>
     <ul>
         <li>Import from the filesystem or the web.</li>
         <li>Create new files from scratch.</li>
@@ -477,10 +510,6 @@
     <h1 class="color2">File System API</h1>
 </section>
 
-<section>
-
-
-</section>
 <section>
     <h3>File System API</h3>
 

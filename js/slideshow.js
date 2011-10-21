@@ -62,12 +62,41 @@ var Slideshow = (function() {
      * Activates the main program logic.
      */
     function initialize() {
+
         document.addEventListener('keydown', onDocumentKeyDown, false);
+        //document.addEventListener('click', navigateRight, false);
         document.addEventListener('touchstart', onDocumentTouchStart, false);
         window.addEventListener('hashchange', onWindowHashChange, false);
 
+        document.querySelector('.toc .total').innerHTML = document.querySelectorAll('#main>section').length;
+        document.querySelector('.toc .current').innerHTML = '01';
+
+        // remove all notes nodes
+        Array.prototype.slice.call(document.querySelectorAll('.notes')).forEach(
+            function(note) {
+                note.innerHTML = '';
+            });
+        initLists();
+
         // Read the initial state of the URL (hash)
         readURL();
+    }
+
+
+    function initLists() {
+        var lists, items;
+
+        // Set up the incremental lists
+        lists = Array.prototype.slice.call(document.querySelectorAll('ul[data-list]'));
+
+        // Loop over the lists and build incremental
+        lists.forEach(function(list) {
+            items = Array.prototype.slice.call(list.querySelectorAll('li'));
+            items.forEach(function(item) {
+                item.setAttribute('data-list', 'hidden');
+            });
+        });
+
     }
 
     /**
@@ -203,10 +232,15 @@ var Slideshow = (function() {
      * Updates the visual slides to represent the currently  set indices.
      */
     function slide() {
+
+
         indexh = updateSlides('#main>section', indexh);
         indexv = updateSlides('section.present>section', indexv);
 
+        document.querySelector('.toc .current').innerHTML = (indexh < 9 ? 0 : '') + (indexh + 1);
+
         writeURL();
+
     }
 
     /**
@@ -255,12 +289,33 @@ var Slideshow = (function() {
         indexh --;
         indexv = 0;
         slide();
+
     }
 
     function navigateRight() {
-        indexh ++;
-        indexv = 0;
-        slide();
+        var hiddenItem, forward = true, currentSlide;
+
+        currentSlide = document.querySelector('section.present');
+
+        // Check to see if we have hidden items in lists
+        hiddenItem = currentSlide.querySelector('li[data-list=hidden]');
+        if (hiddenItem) {
+            hiddenItem.removeAttribute('data-list');
+            forward = false;
+        } else {
+            hiddenItem = currentSlide.querySelector('.watermarkedHidden');
+            if (hiddenItem) {
+                currentSlide.querySelector('.content').classList.add('halfOpacity');
+                hiddenItem.classList.remove('watermarkedHidden');
+                hiddenItem.classList.add('watermarked');
+                forward = false;
+            }
+        }
+        if (forward) {
+            indexh ++;
+            indexv = 0;
+            slide();
+        }
     }
 
     function navigateUp() {
@@ -278,7 +333,7 @@ var Slideshow = (function() {
     // functions
     initialize();
 
-    // Expose some methods publicly
+// Expose some methods publicly
     return {
         navigateTo: navigateTo,
         navigateLeft: navigateLeft,
@@ -287,5 +342,8 @@ var Slideshow = (function() {
         navigateDown: navigateDown
     };
 
-})();
+}
+
+    )
+    ();
 

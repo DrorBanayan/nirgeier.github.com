@@ -16,6 +16,10 @@
  */
 .syntaxhighlighter {
     background-color: white !important;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    width: 900px;
 }
 
 .syntaxhighlighter .line.alt1 {
