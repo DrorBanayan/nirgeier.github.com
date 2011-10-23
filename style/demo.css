@@ -15,7 +15,6 @@ body {
 
 input[type=button] {
     background-color: #003ED7;
-    text-shadow: #EEE 0 0 2px;
     -webkit-transition: all 0.3s linear;
     letter-spacing: 1px;
     display: inline-block;
@@ -28,4 +27,61 @@ input[type=button] {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0.25)), color-stop(1, rgba(255, 255, 255, 0.05)));
     text-shadow: #444 0 -1px 1px;
     cursor: pointer;
+}
+
+#drop_zone {
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    font: 20pt bold 'Vollkorn';
+    color: #BBB;
+    background-color: #003ED7;
+    text-shadow: #EEE 0 0 2px;
+    -webkit-transition: all 0.3s linear;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0.25)), color-stop(1, rgba(255, 255, 255, 0.05)));
+    text-shadow: #444 0 -1px 1px;
+
+}
+
+#drop_zone:hover {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1, rgba(255, 255, 255, 0.75)), color-stop(0, rgba(255, 255, 255, 0.05)));
+    color: black;
+}
+
+#canvas {
+    height: 300px;
+    width: 960px;
+    position: absolute;
+    bottom: 10px;
+    z-index: 50;
+    background-color: #E3E3E3;
+}
+
+fieldset {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.infoTitle {
+    width: 125px;
+    font-weight: bold;
+    color: #000000;
+    display: inline-block;
+    text-transform: capitalize;
+    text-align: left;
+}
+
+.info {
+    color: #000000;
+}
+
+#dropArea {
+    position: absolute;
+    width: 960px;
+    height: 600px;
+    left: 50%;
+    top: 50%;
+    margin: -300px 0 0 -480px;
+    overflow: hidden;
 }

@@ -5,7 +5,6 @@
 /*********************************************
 * FONT-FACE DEFINITIONS
 *********************************************/
-
 @font-face {
     font-family: 'League Gothic';
     src: url('league_gothic-webfont.ttf') format('truetype');
@@ -28,6 +27,20 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e4e4e4;
+    -webkit-border-radius: 5px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: inherit;
+}
 
 html, body, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
@@ -90,7 +103,7 @@ Also: hot pink. */
 html, body {
     padding: 0;
     margin: 0;
-    overflow: hidden;
+    /*    overflow: hidden;*/
 
     font-family: 'Crimson Text', Times, 'Times New Roman', serif;
     font-size: 36px;
@@ -183,10 +196,7 @@ h4.inverted {
     width: 100%;
     min-height: 600px;
     -webkit-transform-style: preserve-3d;
-    -webkit-transition: all 750ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
-    -moz-transition: all 750ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
-    -o-transition: all 750ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
-    transition: all 750ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
+    /*-webkit-transition: all 0.25s cubic-bezier(0.260, 0.860, 0.440, 0.985);*/
 }
 
 #main section.past {
@@ -344,15 +354,6 @@ code, .container, div.line {
     font-weight: normal;
 }
 
-#drop_zone {
-    border: 2px dashed #BBB;
-    border-radius: 5px;
-    padding: 25px;
-    text-align: center;
-    font: 20pt bold 'Vollkorn';
-    color: #BBB;
-}
-
 .relative {
     position: relative;
     -webkit-animation-iteration-count: infinite, infinite;
@@ -368,10 +369,11 @@ code, .container, div.line {
     font-size: 20px;
 }
 
-.highlight {
+.highlight, mark {
     text-shadow: 1px 1px 2px #fff, 1px 1px 4px #bbb;
     color: #ff3300;
     zoom: 125%;
+    background-color: transparent;
 
 }
 
@@ -397,7 +399,7 @@ ul.moreItems li {
     left: 50%;
     margin: -81px 0 0 -480px;
     -webkit-transform: rotate(1080deg) scale(1, 1);
-    -webkit-transition: all 750ms ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
     color: #336600;
     font-size: 400%;
 }
@@ -420,8 +422,13 @@ ul.moreItems li {
     display: inline-block;
 }
 
-li[data-list=hidden] {
+[data-list=hidden] {
     opacity: 0.05;
+}
+
+[data-list=hidden]>div {
+    display: initail;
+
 }
 
 .fileAPI {

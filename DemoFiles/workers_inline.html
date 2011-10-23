@@ -5,6 +5,7 @@
 <body>
 <input type="button" onclick="InlineWorkerDemo.startWorker()" value="Start the worker">
 <input type="button" onclick="InlineWorkerDemo.stopWorker()" value="Stop the worker">
+<input type="button" onclick="document.querySelector('#log').innerHTML=''" value="Clear Messages">
 <a href="chrome://blob-internals/">chrome://blob-internals</a>
 <br/>
 <br/>
@@ -13,10 +14,12 @@
 
 <script id="worker1" type="javascript/worker">
     // This script won't be parsed by JS engines because its type is javascript/worker.
+    var uniqeId = Date.now();
     self.onmessage = function(e) {
         self.postMessage({
             'message': 'Message #' + e.data.counter + ' from worker.',
-            'timestamp' : Date.now()
+            'timestamp' : Date.now(),
+            'id': uniqeId
         });
     };
     // Rest of your worker code goes here.
@@ -46,7 +49,6 @@
             var fragment = document.createDocumentFragment();
             fragment.appendChild(document.createTextNode(msg));
             fragment.appendChild(document.createElement('br'));
-
             document.querySelector("#log").appendChild(fragment);
         }
 

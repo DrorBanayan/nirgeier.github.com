@@ -10,6 +10,7 @@
     http://weblog.bocoup.com/javascript-web-workers-from-basics-to-jquery-hive-part-i
     http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html
     http://www.sitepoint.com/javascript-shared-web-workers-html5/
+    http://html5-demos.appspot.com/static/html5-whats-new/template/index.html#1
 -->
 
 <head>
@@ -59,10 +60,20 @@
             <li>No threads (single thread, sequence)</li>
             <li>Workarounds : asynchronously code.</li>
             <ul class="innerList">
-                <li><span class="highlight">ajax</span> (XHR/XHR2)/ jsonp</li>
-                <li><span class="highlight">events</span></li>
-                <li class="strike">setInteval</span> (Not recommended, Bad coding !!!)</li>
-                <li><span class="highlight">setTimeout</span></li>
+                <li>
+                    <mark>ajax</mark>
+                    (XHR/XHR2)/ jsonp
+                </li>
+                <li>
+                    <mark>events</mark>
+                </li>
+                <li class="strike">
+                    <mark>setInteval</mark>
+                    (Not recommended, Bad coding !!!)
+                </li>
+                <li>
+                    <mark>setTimeout</mark>
+                </li>
             </ul>
         </ul>
     </div>
@@ -75,16 +86,28 @@
 <section>
     <h3 class="color1">Workers</h3>
     <ul data-list="buildUpList">
-        <li>Workers code is written in a <span class="highlight">**separate</span> JS file.</li>
-        <li>Workers operate <span class="highlight">independently</span> of the browser UI thread.</li>
-        <li>Workers run <span class="highlight">non-blocking scripts parallel</span> to the main thread.</li>
+        <li>Workers code is written in a
+            <mark>**separate</mark>
+            JS file.
+        </li>
+        <li>Workers operate
+            <mark>independently</mark>
+            of the browser UI thread.
+        </li>
+        <li>Workers run
+            <mark>non-blocking scripts parallel</mark>
+            to the main thread.
+        </li>
         <li>When creating worker - new thread is created and source is downloaded
-            <span class="highlight">asynchronously</span>.
+            <mark>asynchronously</mark>
+            .
             If source not found -> 404 (silent failure)
         </li>
         <li>Workers can only pass data in and out of a thread through the
-            <span class="highlight">postMessage()</span> API and
-            <span class="highlight">onMessage</span> Event.
+            <mark>postMessage()</mark>
+            API and
+            <mark>onMessage</mark>
+            Event.
         </li>
 
         <span class="notes">
@@ -106,13 +129,31 @@
     <p class="dark">Worker can use any of the following:</p>
 
     <ul class="moreItems" data-list="buildUpList">
-        <li>The <span class="highlight">navigator</span> object</li>
-        <li>The <span class="highlight">location</span> object (read-only)</li>
-        <li><span class="highlight">XMLHttpRequest</span> (XHR/XHR2)</li>
-        <li><span class="highlight">setTimeout()/clearTimeout()</span></li>
-        <li><span class="highlight strike">setInterval()/clearInterval()</span></li>
-        <li>The <span class="highlight">Application Cache</span></li>
-        <li><span class="highlight">importScripts()</span> (load external scripts to worker env)</li>
+        <li>The
+            <mark>navigator</mark>
+            object
+        </li>
+        <li>The
+            <mark>location</mark>
+            object (read-only)
+        </li>
+        <li>
+            <mark>XMLHttpRequest</mark>
+            (XHR/XHR2)
+        </li>
+        <li>
+            <mark>setTimeout()/clearTimeout()</mark>
+        </li>
+        <li>
+            <mark class="strike">setInterval()/clearInterval()</mark>
+        </li>
+        <li>The
+            <mark>Application Cache</mark>
+        </li>
+        <li>
+            <mark>importScripts()</mark>
+            (load external scripts to worker env)
+        </li>
     </ul>
 </section>
 
@@ -121,15 +162,27 @@
 
     <p class="dark">Workers don't have access to the following:</p>
     <ul data-list="buildUpList">
-        <li>The <span class="highlight"><b>DOM</b></span></li>
-        <li>The <span class="highlight">window</span> object
+        <li>The
+            <mark><b>DOM</b></mark>
+        </li>
+        <li>The
+            <mark>window</mark>
+            object
             (No access to variables or functions on main page)
         </li>
-        <li>The <span class="highlight">document</span> object</li>
-        <li>The <span class="highlight">parent</span> object</li>
+        <li>The
+            <mark>document</mark>
+            object
+        </li>
+        <li>The
+            <mark>parent</mark>
+            object
+        </li>
         <li class="color1">Workers can only pass data in and out of a thread through the
-            <span class="highlight">postMessage()</span> API and
-            <span class="highlight">onMessage</span> Event.
+            <mark>postMessage()</mark>
+            API and
+            <mark>onMessage</mark>
+            Event.
         </li>
 
     </ul>
@@ -179,7 +232,7 @@
 
             // Web Workers can also communicate between each others using Message channels.
             // http://www.w3.org/TR/webmessaging/#messagechannel
-                
+
             // this, self are both references to the worker global scope
             // onmessage == self.onmessage == this.onmessage
 
@@ -213,16 +266,26 @@
 
     <h3 class="color1">Inline Workers</h3>
     <ul data-list="buildUpList">
-        <li>Create your worker script on the <span class="highlight">fly</span>, or create a self-contained page
-            <span class="highlight">without</span> having to create <span class="highlight">**separate</span> worker
+        <li>Create your worker script on the
+            <mark>fly</mark>
+            , or create a self-contained page
+            <mark>without</mark>
+            having to create
+            <mark>**separate</mark>
+            worker
             file.
         </li>
         <li>
-            <span class="highlight">"Inline"</span> your worker in the same HTML file as your main logic by<br/>
-            creating a <span class="highlight">BlobBuilder</span> and appending the worker code as a string.
+            <mark>"Inline"</mark>
+            your worker in the same HTML file as your main logic by<br/>
+            creating a
+            <mark>BlobBuilder</mark>
+            and appending the worker code as a string.
         </li>
         <li>
-            This is done using <span class="highlight">Blob URL</span>. Blob URLs are unique and last until the document
+            This is done using
+            <mark>Blob URL</mark>
+            . Blob URLs are unique and last until the document
             is unloaded.
             In Chrome, there's a nice page to view all of the created blob URLs:
             <a target="_blank" href="chrome://blob-internals/">chrome://blob-internals</a>
@@ -234,7 +297,7 @@
     <h3 class="color1">Inline Workers (Code #1)</h3>
     <pre class="brush: html;highlight: [2,3]; ruler: true;">
         ...
-        <!-- This is the "hack". set the type to text or any unhandled type and the page will not handle it as javascript -->
+        //This is the "hack". set the type to text or any unhandled type and the page will not handle it as javascript
         &lt;script id=&quot;worker1&quot; type=&quot;text/plain&quot;&gt;
             onmessage = function(e) { ... };
         &lt;/script&gt;
@@ -307,21 +370,27 @@
 
     <ul data-list="buildUpList">
         <li>
-            Shared workers, once created <span class="highlight">any script</span> running in the same origin can obtain
+            Shared workers, once created
+            <mark>any script</mark>
+            running in the same origin can obtain
             a reference to that worker and communicate with it.
         </li>
         <li>
             Unlike Dedicated web workers, SharedWorkers communicate via a
-            <span class="highlight">port</span> object and attach a message event handler. <br/>
+            <mark>port</mark>
+            object and attach a message event handler. <br/>
         </li>
         <li>
-            Before using the first <span class="highlight">postMessage()</span>
-            you must call the port’s <span class="highlight">start()</span>.
+            Before using the first
+            <mark>postMessage()</mark>
+            you must call the port’s
+            <mark>start()</mark>
+            .
         </li>
         <li>
 
         <span class="important">
-            Unlike dedicated worker shared worker will live until <span class="highlight">port.close()</span>
+            Unlike dedicated worker shared worker will live until <mark>port.close()</mark>
             will be called, so its important to "release" them
         </span>
 
@@ -330,7 +399,7 @@
 </section>
 
 <section>
-    <h3>Shared Web Worker (Main page)</h3>
+    <h3 class="color1">Shared Web Worker (Main page)</h3>
     <pre class="brush: javascript; highlight: [10,13]">
         // Creating a Shared Web Worker
         var worker = new SharedWorker(...);
@@ -377,7 +446,7 @@
     <br/>
     <span class="important">
         Shared Workers can communicate between browser windows or tabs using the
-        <span class="highlight">window.postMessage()</span>
+        <mark>window.postMessage()</mark>
     </span>
     <br/>
 
@@ -386,56 +455,159 @@
 <section>
     <h3 class="centered">
         <a href="DemoFiles/workers_shared.html" target="_blank">Demo: Shared Web Worker</a>
+        <br/>
+        <br/>
+        <br/>
+        <a href="http://updates.html5rocks.com/2011/09/Workers-ArrayBuffer">
+            sending an ArrayBuffer (or Typed Array)<br/><br/>
+            to/from a Web Worker
+        </a>
     </h3>
 </section>
 
 <section>
     <h1 class="color2 centered">
-         <img src="images/fileAPI_128.png" align="absmiddle"> File API
+        <img src="images/fileAPI_128.png" align="absmiddle"> File API
     </h1>
 </section>
 
 <section>
-    <h3 class="fileAPI">File API features</h3>
-    <ul>
-        <li>Import from the filesystem or the web.</li>
-        <li>Create new files from scratch.</li>
-        <li>Manipulate existing file data.</li>
-        <li>Store file data on the client.</li>
-        <li>Publish files back to the web.</li>
+    <h3 class="color2">File API features</h3>
+    <ul data-list="buildUpList">
+        <li>
+            <mark>Import</mark>
+            from the filesystem or the web.
+        </li>
+        <li>
+            <mark>Create</mark>
+            new files from scratch.
+        </li>
+        <li>
+            <mark>Manipulate</mark>
+            existing file data.
+        </li>
+        <li>
+            <mark>Store</mark>
+            file data on the client.
+        </li>
+        <li>
+            <mark>Publish</mark>
+            files back to the web.
+        </li>
     </ul>
 </section>
 <section>
-    <h3>Local files</h3>
+    <h3 class="color2">Local files</h3>
 
-    <p>
-        The File API specification provides a standard way to interact with local files.
-    </p>
-    <br/>
-    <h4>API:</h4>
+    The File API specification provides a <br/>
+    standard way to interact with local files.
 
-    <p>
-        <span class="code">File</span> - an individual file; <br/>
-        <span class="code">FileList</span> - an array-like sequence of File objects.<br/>
-        <span class="code">Blob</span> - Allows for slicing a file into byte ranges.<br/>
-    </p>
-    <br/>
-    <h4>Additional features</h4>
+    <p class="color3">API Objects:</p>
+    <ul data-list="buildUpList" class="moreItems">
+        <li>
+            <mark>File</mark>
+            - an individual file
+        </li>
+        <li>
+            <mark>FileList</mark>
+            - an array-like sequence of File objects.
+        </li>
+        <li>
+            <mark>Blob</mark>
+            - Allows for slicing a file into byte ranges.
+        </li>
+        <li>
+            <mark>Drag And Drop</mark>
+            - build in support for files Drag And Drop<br/></li>
+    </ul>
 
-    <p>
-        <span class="code">FileReader</span> - used to asynchronously read a file (event handling)<br/>
-        <span class="code">Drag And Drop</span> - build in support for files Drag And Drop<br/>
-    </p>
 </section>
 
 <section>
-    <h3>Reading local files</h3>
+    <h3 class="color2">File Reader</h3>
 
-    <pre class="brush: html">
-        <input type="file" id="..." name="..." multiple webkitdirectory/>
-    </pre>
+    <ul data-list="buildUpList">
+        <li>
+            The
+            <mark>FileReader</mark>
+            used to
+            <mark>asynchronously</mark>
+            read a
+            file using JavaScript event handling.
+        </li>
+        <li>It is possible to monitor the<br/>
+            <mark>progress of a read</mark>
+            ,
+            <mark>catch errors</mark>
+            ,
+            and determine when a load is
+            <mark>complete</mark>
+            .
+            In many ways the APIs resemble XMLHttpRequest's event model.
+        </li>
+        <li>
+            After you've obtained a File reference, instantiate a
+            <mark>FileReader</mark>
+            object to
+            read its contents into memory.
+            When the load finishes, the reader's
+            <mark>onload</mark>
+            event is fired and its result
+            attribute can be used to access the file data.
+        </li>
+
+    </ul>
+</section>
+
+<section>
+    <h3 class="color2">FileReader (Methods)</h3>
+
+    <p>FileReader includes four options for reading a file, asynchronously:</p>
+    <ul data-list="buildUpList">
+        <li>FileReader.
+            <mark>readAsBinaryString(Blob|File)</mark>
+            <br/>
+            Result = the file/blob's data as a binary string (bytes 0-255).
+        </li>
+        <li>
+            FileReader.
+            <mark>readAsText(Blob|File, opt_encoding)</mark>
+            <br/>
+            Result = the file/blob's data as a text string. (Default encoding is UTF-8)
+        </li>
+        <li>
+            FileReader.
+            <mark>readAsDataURL(Blob|File)</mark>
+            <br/>
+            Result = the file/blob's data encoded as a data URL.
+        </li>
+        <li>
+            FileReader.
+            <mark>readAsArrayBuffer(Blob|File)</mark>
+            <br/>
+            Result = the file/blob's data as an ArrayBuffer object.
+        </li>
+    </ul>
+
+</section>
+<section>
+    <h3 class="color2">FileReader (Events)</h3>
+    <ul class="moreItems">
+        <li>onloadstart</li>
+        <li>onprogress</li>
+        <li>onload</li>
+        <li>onabort</li>
+        <li>onerror</li>
+        <li>onloadend</li>
+    </ul>
+</section>
+
+<section>
+    <h3 class="color2">Reading local files</h3>
+
+    <p>&lt;input type=&quot;file&quot; id=&quot;...&quot; name=&quot;...&quot; multiple webkitdirectory/&gt;</p>
     <br/>
-    <pre class="brush: javascript">
+    <pre class="brush: javascript; highlight: [2,6]">
         // Add the event listener to the input type="file"
         document.getElementById('...').addEventListener('change',
             function( e){
@@ -454,130 +626,123 @@
                     // f.lastModifiedDate.toLocaleDateString()
                 }
                 ...
+            }, false);
+    </pre>
+</section>
+
+<section>
+    <h3 class="color2">Reading local files (slice)</h3>
+
+    <p>The slice method allow us to read parts of the file.</p>
+    <pre class="brush: javascript; highlight:[2,12]">
+
+    // If we use onloadend, we need to check the readyState.
+    reader.onloadend = function(evt) {
+
+        // DONE == 2
+        if (evt.target.readyState === FileReader.DONE) {
+            // evt.target.result;
+        }
+    };
+
+    // Chrome: webkitSlice
+    // FF:     mozSlice
+    var blob = file.slice(start, length);
+    reader.readAsBinaryString(blob);
+
+    </pre>
+</section>
+
+<section>
+    <h3 class="color2">Copy and paste</h3>
+
+    <pre class="brush: javascript; highlight:[2,5,9,14,16]">
+        // Add the paste code to the page
+        document.body.onpaste = function(e) {
+
+            // Get the reference to teh image file
+            var items = e.clipboardData.items;
+            for (var i = 0; i < items.length; ++i) {
+
+                // Verify that we have  a png file
+                if (items[i].kind == 'file' && items[i].type == 'image/png') {
+
+                    var img = document.createElement('img');
+
+                    // Get the file data
+                    var blob = items[i].getAsFile();
+                    // Set the image src
+                    img.src = window.webkitURL.createObjectURL(blob);
+
+                    document.body.appendChild(img);
+                }
             }
-        }, false);
+        };
+
 
     </pre>
-
 </section>
 
 <section>
-    <h3>Local files (Drag and drop)</h3>
+    <h3 class="color2">Monitoring the progress of a read</h3>
 
-    <output id="list1" class="small"></output>
-    <div id="drop_zone">Drop files here</div>
+    <p> One of the nice things that we get for free when using
+        <mark>async</mark>
+        event handling
+        is the ability to
+        <mark>monitor the progress</mark>
+        of the file read; useful for large files,
+        catching errors,
+        and figuring out when a read is complete.
+        <br/>
+        The
+        <mark>onloadstart</mark>
+        and
+        <mark>onprogress</mark>
+        events can be used
+        to monitor the progress of a read.
+    </p>
+    <span data-list="hidden">
+    <pre class="brush: javascript; highlight: [6,8,13]">
+    // store the progress percent
+    var percentLoaded;
 
-    <script>
-        function handleFileSelect(evt) {
-            evt.stopPropagation();
-            evt.preventDefault();
-
-            var files = evt.dataTransfer.files; // FileList object.
-
-            // files is a FileList of File objects. List some properties.
-            var output = [];
-            for (var i = 0, f; f = files[i]; i++) {
-                output.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a', ') - ',
-                        f.size, ' bytes, last modified: ',
-                        f.lastModifiedDate.toLocaleDateString(), '</li>');
-            }
-            document.querySelector('#list1').innerHTML = '<ul>' + output.join('') + '</ul>';
+    // evt is an ProgressEvent.
+    function updateProgress(evt) {
+        if (evt.lengthComputable) {
+          // calculate the progress in %
+          var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
         }
+      }
 
-        function handleDragOver(evt) {
-            evt.stopPropagation();
-            evt.preventDefault();
-        }
-
-        // Setup the dnd listeners.
-        var dropZone = document.getElementById('drop_zone');
-        dropZone.addEventListener('dragover', handleDragOver, false);
-        dropZone.addEventListener('drop', handleFileSelect, false);
-    </script>
-</section>
-
-<section>
-    <h3><a href="DemoFiles/filesDemo1.html">Demo: Read MP3 info</a></h3>
-
-    <h3><a href="DemoFiles/filesDemo2.html">Demo: Read and play MP3 file </a></h3>
-
-    <h3>Data URL: <a
-            href="data:text/html,<textarea style='font:20pt Courier;outline:none;padding:10px;height:50%;width:100%;border:1px solid #ccc;border-radius:5px' placeholder='Add code here...'></textarea>">Open
-        inline html document</a></h3>
-</section>
-
-<section>
-    <h1 class="color2">File System API</h1>
-</section>
-
-<section>
-    <h3>File System API</h3>
-
-    <h2>Opening the file system</h2>
-    <pre class="brush: javascript;">
-        window.requestFileSystem(
-          TEMPORARY,        // persistent vs. temporary storage
-          1024 * 1024,      // size (bytes) of needed space
-          initFs,           // success callback
-          opt_errorHandler  // opt. error callback, denial of access
-        );
+    // reader = FileReader, register the progress event
+    reader.onprogress = updateProgress;
     </pre>
+</span>
 </section>
 
 <section>
-    <h3>File System API</h3>
+    <h3 class="color2">Demos: Local file(s)</h3>
+    <br/>
+    <br/>
 
-    <h2>Fetching a file by name</h2>
-    <pre class="brush: javascript;">
-        function initFs(fs) {
-
-          fs.root.getFile('logFile.txt', {create: true}, function(fileEntry) {
-
-            // fileEntry.isFile == true
-            // fileEntry.name == 'logFile.txt'
-            // fileEntry.fullPath == '/logFile.txt'
-
-            // Get a File obj
-            fileEntry.file(function(file) { ... }, errorHandler);
-
-            // fileEntry.remove(function() {}, errorHandler);
-            // fileEntry.moveTo(...);
-            // fileEntry.copyTo(...);
-            // fileEntry.getParent(function(dirEntry) {}, errorHandler);
-
-          }, errorHandler);
-
-        }
-    </pre>
-</section>
-<section>
-    <h3>File System API</h3>
-
-    <h2>File System URLs ( filesystem: )</h2>
-    <pre class="brush: javascript;">
-        var img = document.createElement('img');
-
-        // filesystem:http://example.com/temporary/myfile.png
-        img.src = fileEntry.toURL();
-        document.body.appendChild(img);
-
-        // Retrieve a file by its filesystem URL:
-        window.resolveLocalFileSystemURL(img.src, function(fileEntry) { ... });
-        </pre>
-</section>
-
-<section>
-    <h3><a href="http://www.htmlfivewow.com/demos/terminal/terminal.html" target="_blank">File system API Demo</a>
+    <h3>
+        <a href="DemoFiles/filesDemo01.html" target="_blank" onclick="return false;">Drag And Drop</a><br/><br/>
+        <a href="DemoFiles/filesDemo02.html" target="_blank" onclick="return false;">Copy And Paste</a><br/><br/>
+        <a href="DemoFiles/filesDemo03.html" target="_blank" onclick="return false;">Read and play MP3 file </a>
+        <br/><br/>
+        Data URL:
+        <a href="data:text/html,<textarea style='font:40pt Courier;outline:none;padding:10px;height:50%;width:100%;border:1px solid #ccc;border-radius:25px' placeholder='Inline HTML code :-) ...'></textarea>">Open
+            inline html document
+        </a>
     </h3>
-
 </section>
+
 </div>
 
 <script src="js/slideshow.js"></script>
 <script src="js/jquery.min.js"></script>
-<script src="js/workersUtil.js"></script>
 <script type="text/javascript">SyntaxHighlighter.all();</script>
-
 
 </body>
 </html>

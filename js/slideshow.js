@@ -64,7 +64,7 @@ var Slideshow = (function() {
     function initialize() {
 
         document.addEventListener('keydown', onDocumentKeyDown, false);
-        //document.addEventListener('click', navigateRight, false);
+        document.addEventListener('click', navigateRight, false);
         document.addEventListener('touchstart', onDocumentTouchStart, false);
         window.addEventListener('hashchange', onWindowHashChange, false);
 
@@ -233,14 +233,10 @@ var Slideshow = (function() {
      */
     function slide() {
 
-
         indexh = updateSlides('#main>section', indexh);
         indexv = updateSlides('section.present>section', indexv);
-
         document.querySelector('.toc .current').innerHTML = (indexh < 9 ? 0 : '') + (indexh + 1);
-
         writeURL();
-
     }
 
     /**
@@ -298,7 +294,7 @@ var Slideshow = (function() {
         currentSlide = document.querySelector('section.present');
 
         // Check to see if we have hidden items in lists
-        hiddenItem = currentSlide.querySelector('li[data-list=hidden]');
+        hiddenItem = currentSlide.querySelector('[data-list=hidden]');
         if (hiddenItem) {
             hiddenItem.removeAttribute('data-list');
             forward = false;
