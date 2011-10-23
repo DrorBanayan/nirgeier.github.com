@@ -1,0 +1,187 @@
+<html>
+<head>
+    <title>Dedicated Worker</title>
+    <link rel="stylesheet" href="../style/demo.css">
+</head>
+<body>
+
+<style>
+    #wmap {
+        height: 200px;
+    }
+
+    #w-loading {
+        visibility: hidden;
+        display: inline;
+        background-color: red;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        clear: both;
+        width: 100%;
+        text-align: center;
+    }
+
+    #w-wrapper {
+        width: 640px;
+    }
+
+    #message{
+        font-size: 12px;
+    }
+</style>
+<div id="w-wrapper">
+    <div id="wmap" class="gmap example">
+        <img src="http://maps.google.com/maps/api/staticmap?center=13,13&zoom=3&size=680x200&sensor=false"/>
+    </div>
+    <div style="margin-top:25px;">
+        <input type="button" id="find-route-y" value="Find route with Workers">
+        <input type="button" id="find-route-n" value="Find route without Workers">
+        <br/>
+        <br/>
+
+        <p id="w-loading">Loading Route...</p>
+        <br/>
+        <br/>
+
+    </div>
+    <div id="message">
+        Try dragging the map while the complex route is being calculated<br/>
+        (you will only be able to do that with Workers!)
+    </div>
+</div>
+<script defer>
+    (function() {
+        var markersArray = [];
+        var map = null;
+        var useThreads = false;
+
+        document.querySelector('#w-wrapper').addEventListener('click', function(event) {
+            if (!map) {
+                map = new google.maps.Map(document.querySelector('#wmap'), {
+                    zoom: 3,
+                    center: new google.maps.LatLng(13, 13),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+                map.getDiv().style.border = '1px solid #ccc';
+                drawPoints();
+            }
+
+            if (event.target.id == 'find-route-y') {
+                useThreads = true;
+                document.querySelector('#w-loading').style.visibility = 'visible';
+                test();
+            } else if (event.target.id == 'find-route-n') {
+                useThreads = false;
+                document.querySelector('#w-loading').style.visibility = 'visible';
+                // this setTimout is so that we see the 'loading' label
+                setTimeout(function() {
+                    test();
+                }, 10);
+            }
+        }, false);
+
+        function drawPath(path) {
+            var firstPoint = true;
+            var l = p1.length;
+            var scaleFactor = 5;
+            for (var i = 0; i < l - 1; ++i) {
+                var points = [
+                    new google.maps.LatLng(p1[i].x / scaleFactor,
+                            p1[i].y / scaleFactor),
+                    new google.maps.LatLng(p1[i + 1].x / scaleFactor,
+                            p1[i + 1].y / scaleFactor)
+                ];
+                var polyline = new google.maps.Polyline(
+                        {path: points, strokeColor: '#ff0000', strokeWeight: 1});
+                markersArray.push(polyline);
+                polyline.setMap(map);
+            }
+        }
+
+        function drawPoints() {
+            var blueIcon = new google.maps.MarkerImage(
+                    'webworkers/point.png',
+                    new google.maps.Size(3, 3), // size
+                    new google.maps.Point(0, 0), // origin
+                    new google.maps.Point(0, 0)); // anchor
+            for (var i = 0; i < p1.length; ++i) {
+                // Render in Gmap instead of canvas
+                var point = new google.maps.LatLng(p1[i].x / 5, p1[i].y / 5);
+                var marker = new google.maps.Marker({
+                    position: point, icon: blueIcon, map: map});
+                markersArray.push(marker);
+            }
+        }
+
+        function deleteOverlays() {
+            if (markersArray) {
+                for (var i in markersArray) {
+                    markersArray[i].setMap(null);
+                }
+                markersArray = [];
+            }
+        }
+
+        function test() {
+            var name = "Test 1";
+            var self = this;
+            deleteOverlays();
+            drawPoints();
+            setTimeout(function() {
+                var opts = {
+                    points: p1,
+                    t0: 1,
+                    g: 0.99,
+                    stepsPerT: 10
+                };
+                var callback = {
+                    name: name,
+                    newMin: function(p) {
+                    },
+                    draw: function(p) {
+                        document.querySelector('#w-loading').style.visibility = 'hidden';
+                        drawPath(p);
+                    }
+                };
+                var a;
+                if (useThreads) {
+                    var worker = new Worker('webworkers/Worker.js')
+                    worker.onmessage = function(event) {
+                        var returnedData = JSON.parse(event.data);
+                        var msg = returnedData[0];
+                        var p = returnedData[1];
+                        callback[msg](p);
+                    };
+                    worker.onerror = function(event) {
+                        console.log(event);
+                    };
+                    worker.postMessage(JSON.stringify({
+                        opts: opts,
+                        width: 200,
+                        height: 200
+                    }));
+                } else {
+                    var annealing = new Annealing();
+                    var callback2 = {
+                        onNewMin: function(p) {
+                            // postMessage('newmin')
+                        },
+                        onDone: function(p) {
+                            document.querySelector('#w-loading').style.visibility = 'hidden';
+                            drawPath(p);
+                        }
+                    };
+                    annealing.init(opts, opts.width, opts.height, callback2);
+                    annealing.go();
+                }
+            }, 10);
+        }
+    })();
+</script>
+<script src="webworkers/points.js" defer></script>
+<script src="webworkers/annealing.js" defer></script>
+
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+</body>
+</html>

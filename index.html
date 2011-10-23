@@ -86,17 +86,17 @@
 <section>
     <h3 class="color1">Workers</h3>
     <ul data-list="buildUpList">
-        <li>Workers code is written in a
-            <mark>**separate</mark>
-            JS file.
+        <li>Workers run
+            <mark>non-blocking scripts parallel</mark>
+            to the main thread.
         </li>
         <li>Workers operate
             <mark>independently</mark>
             of the browser UI thread.
         </li>
-        <li>Workers run
-            <mark>non-blocking scripts parallel</mark>
-            to the main thread.
+        <li>Workers code is written in a
+            <mark>**separate</mark>
+            JS file.
         </li>
         <li>When creating worker - new thread is created and source is downloaded
             <mark>asynchronously</mark>
@@ -151,7 +151,7 @@
             <mark>Application Cache</mark>
         </li>
         <li>
-            <mark>importScripts()</mark>
+            <mark>importScripts('file1','file2'...)</mark>
             (load external scripts to worker env)
         </li>
     </ul>
@@ -191,7 +191,7 @@
 <section>
     <h3 class="color1">Worker Code (Main Window)</h3>
 
-        <pre class="brush: javascript; highlight: [21,24]">
+        <pre class="brush: javascript; highlight: [4,7,10,21,24]">
         function initWorker(){
 
             // Creating the worker
@@ -227,8 +227,10 @@
 <section>
     <h3 class="color1">Worker Code (Worker file)</h3>
 
-            <pre class="brush: javascript;">
-            // In the worker filewe need to implement the onmessage function
+            <pre class="brush: javascript;highlight: [1, 8, 10]">
+            importScripts('js/jquery...', 'js/submodule.js', ...);
+
+            // In the worker file we need to implement the onmessage function
 
             // Web Workers can also communicate between each others using Message channels.
             // http://www.w3.org/TR/webmessaging/#messagechannel
@@ -258,7 +260,16 @@
 </section>
 
 <section>
-    <h3 class="centered"> Demo: Dedicated Web Worker</h3>
+
+    <div class="centered">
+        <mark>http://slides.html5rocks.com/#web-workers</mark>
+        <br/>
+        <br/>
+
+        <h3 class="">
+            <a href="demofiles/workers_dedicated.html">Demo: Dedicated Web Worker</a>
+        </h3>
+    </div>
 </section>
 
 <section>
@@ -302,7 +313,7 @@
             onmessage = function(e) { ... };
         &lt;/script&gt;
         </pre>
-        <pre class="brush: javascript;first-line: 6; highlight: [10,11,15];">
+        <pre class="brush: javascript;first-line: 6; highlight: [8,10,11,15];">
             ...
             // BlobBuilder Prefix based upon browser: WebKitBlobBuilder || MozBlobBuilder
             var blobBuilder = new /*WebKit*/BlobBuilder();

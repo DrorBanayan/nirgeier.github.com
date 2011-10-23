@@ -1,7 +1,7 @@
 body {
     padding: 25px;
     margin: 0 auto;
-    overflow: auto;
+    overflow: hidden;
     font-family: 'Crimson Text', Times, 'Times New Roman', serif;
     font-family: Arial;
     font-size: 20px;
