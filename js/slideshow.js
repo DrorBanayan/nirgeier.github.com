@@ -87,7 +87,7 @@ var Slideshow = (function() {
         var lists, items;
 
         // Set up the incremental lists
-        lists = Array.prototype.slice.call(document.querySelectorAll('ul[data-list]'));
+        lists = Array.prototype.slice.call(document.querySelectorAll('ul[data-list], ol[data-list]'));
 
         // Loop over the lists and build incremental
         lists.forEach(function(list) {

@@ -35,7 +35,7 @@
 <section>
     <div class="relative">
         <h2 class="workers color1">WebWorkers</h2>
-        <ol class="workers color1">
+        <ol class="workers color1" data-list="buildUpList">
             <li>Dedicated Workers</li>
             <li>Inline Workers</li>
             <li>Shared Workers</li>
@@ -43,7 +43,7 @@
         <br/>
 
         <h2 class="files color2">FileAPI</h2>
-        <ol class="files color2">
+        <ol class="files color2" data-list="buildUpList">
             <li>File API (Local)</li>
             <li>File System API</li>
         </ol>
@@ -483,7 +483,25 @@
 </section>
 
 <section>
+    <h3 class="color2">Demos: Local file(s)</h3>
+    <br/>
+    <br/>
+
+    <h3>
+        <a href="DemoFiles/filesDemo01.html" target="_blank" onclick="return false;">Drag And Drop</a><br/><br/>
+        <a href="DemoFiles/filesDemo02.html" target="_blank" onclick="return false;">Copy And Paste</a><br/><br/>
+        <a href="DemoFiles/filesDemo03.html" target="_blank" onclick="return false;">Read and play MP3 file </a>
+        <br/><br/>
+        Data URL:
+        <a href="data:text/html,<textarea style='font:40pt Courier;outline:none;padding:10px;height:50%;width:100%;border:1px solid #ccc;border-radius:25px' placeholder='Inline HTML code :-) ...'></textarea>">Open
+            inline html document
+        </a>
+    </h3>
+</section>
+
+<section>
     <h3 class="color2">File API features</h3>
+    <mark>File System API extends those features.</mark>
     <ul data-list="buildUpList">
         <li>
             <mark>Import</mark>

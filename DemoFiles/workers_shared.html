@@ -6,20 +6,30 @@
     <link rel="stylesheet" href="../style/demo.css">
 </head>
 <body>
+<style>
+    body {
+        font-size: 85%;
+    }
 
-<input type="button" value="Send message to New Shared Worker" onclick="SharedWorkerDemo.postMessageToNewWorker()"><br/>
+    select {
+        width: 125px;
+    }
+</style>
+<input type="button" value="Create 'New' Shared Worker" onclick="SharedWorkerDemo.postMessageToNewWorker()">&nbsp;&nbsp;
+<input type="button" onclick="document.querySelector('#log').innerHTML=''" value="Clear Messages">
+<br/>
 <br/>
 Send message to the selected Shared Worker
 <select id="workers1" onchange="SharedWorkerDemo.postMessage(this.value)">
-
+    <option>--</option>
 </select>
 <br/>
 <br/>
 "Kill" the selected Shared Worker
 <select id="workers2" onchange="SharedWorkerDemo.stopWorker(this.value)">
-
+    <option>--</option>
 </select>
-
+<hr>
 <div id="log"></div>
 
 <script>
@@ -91,6 +101,7 @@ Send message to the selected Shared Worker
             },
 
             stopWorker:function(index) {
+                workers[index].port.postMessage({message: 'Killing Worker#' + index, port: index, cmd: 'kill'});
                 workers[index].port.close();
             }
         };
