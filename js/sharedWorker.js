@@ -15,10 +15,15 @@ self.addEventListener("connect", function (e) {
     port.addEventListener("message", function (e) {
         var message = [];
 
+        // Check to see if we are closing any worker
+        if (e.data.cmd === 'kill') {
+            connections--;
+        }
+
         // Performance wise...
-        message.push("Message: ");
+        message.push("[Worker] Message: ");
         message.push(JSON.stringify(e.data));
-        message.push(", (uniqeId #");
+        message.push(", workerId #");
         message.push(uniqeId);
         message.push(", Connections:");
         message.push(connections);
