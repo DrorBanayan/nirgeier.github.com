@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <!--
+    http://www.pacdv.com/sounds/applause-sounds.html
     http://www.google.co.il/search?gcx=c&sourceid=chrome&ie=UTF-8&q=jsfillde+workers
     https://github.com/rwldrn/jquery-hive
     http://blogs.msdn.com/b/davrous/archive/2011/07/15/introduction-to-the-html5-web-workers-the-javascript-multithreading-approach.aspx
@@ -23,7 +24,43 @@
 </head>
 
 <body>
+<div style="position:fixed; font-size: 56px; top:25px;left:25px; font-weight: bold;" id="timer">
 
+
+</div>
+<input type=button value="Stop Timer" onclick="stopTimer();return false;"
+       style="position:fixed; font-size: 10px; top:75px;left:25px; font-weight: bold;">
+</div>
+<input type=button value="reset Timer" onclick="resetTimer();return false;"
+       style="position:fixed; font-size: 10px; top:95px;left:25px; font-weight: bold;">
+</div>
+<input type=button value="Continue Timer" onclick="displayTime();return false;"
+       style="position:fixed; font-size: 10px; top:115px;left:25px; font-weight: bold;">
+</div>
+
+<script>
+    var timer;
+    var duration = localStorage.getItem('timer') || 0;
+
+    function displayTime() {
+        ++duration;
+        localStorage.setItem('timer', duration);
+        var min = parseInt(duration / 60);
+        var sec = parseInt(duration % 60);
+        document.querySelector('#timer').innerHTML = min + ':' + (sec < 10 ? 0 : '') + sec;
+        timer = setTimeout(displayTime, 1000);
+    }
+
+    function stopTimer() {
+        clearTimeout(timer);
+    }
+
+    function resetTimer() {
+        duration = 0;
+    }
+
+    displayTime();
+</script>
 <div class="toc">
     <div class="current"></div>
     /
@@ -200,7 +237,7 @@
             // Communicating With a Dedicated Web Worker several alternative to "register" the onmessage
             worker.onmessage = function( e ) { ... };
 
-            // same as above: using DOM2 events (addEventListener)
+            // same as above: using events (addEventListener)
             worker.addEventListener('message', function(e) { ... }, false);
 
             // The handler event is passed an object with 3 properties:
@@ -411,7 +448,7 @@
 
 <section>
     <h3 class="color1">Shared Web Worker (Main page)</h3>
-    <pre class="brush: javascript; highlight: [10,13]">
+    <pre class="brush: javascript; highlight: [2, 5,10,13]">
         // Creating a Shared Web Worker
         var worker = new SharedWorker(...);
 
@@ -490,12 +527,9 @@
     <h3>
         <a href="DemoFiles/filesDemo01.html" target="_blank" onclick="return false;">Drag And Drop</a><br/><br/>
         <a href="DemoFiles/filesDemo02.html" target="_blank" onclick="return false;">Copy And Paste</a><br/><br/>
-        <a href="DemoFiles/filesDemo03.html" target="_blank" onclick="return false;">Read and play MP3 file </a>
-        <br/><br/>
-        Data URL:
-        <a href="data:text/html,<textarea style='font:40pt Courier;outline:none;padding:10px;height:50%;width:100%;border:1px solid #ccc;border-radius:25px' placeholder='Inline HTML code :-) ...'></textarea>">Open
-            inline html document
-        </a>
+        <a href="DemoFiles/filesDemo03.html" target="_blank" onclick="return false;">Read and play MP3 file </a><br/><br/>
+        <a href="DemoFiles/filesDemo04.html" target="_blank" onclick="return false;">Data URL</a>
+
     </h3>
 </section>
 
@@ -557,12 +591,16 @@
 
     <ul data-list="buildUpList">
         <li>
+            After you've obtained a <mark>File</mark> reference, instantiate a
+            <mark>FileReader</mark>
+            object inorder to work with the file.
+        </li>
+        <li>
             The
             <mark>FileReader</mark>
             used to
             <mark>asynchronously</mark>
-            read a
-            file using JavaScript event handling.
+            read the file content (into memory) using JavaScript event handling.
         </li>
         <li>It is possible to monitor the<br/>
             <mark>progress of a read</mark>
@@ -573,16 +611,6 @@
             <mark>complete</mark>
             .
             In many ways the APIs resemble XMLHttpRequest's event model.
-        </li>
-        <li>
-            After you've obtained a File reference, instantiate a
-            <mark>FileReader</mark>
-            object to
-            read its contents into memory.
-            When the load finishes, the reader's
-            <mark>onload</mark>
-            event is fired and its result
-            attribute can be used to access the file data.
         </li>
 
     </ul>
@@ -638,7 +666,7 @@
     <br/>
     <pre class="brush: javascript; highlight: [2,6]">
         // Add the event listener to the input type="file"
-        document.getElementById('...').addEventListener('change',
+        document.querySelector('#id').addEventListener('change',
             function( e){
 
                 // FileList object. list of the selected files
@@ -758,14 +786,17 @@
     <h3>
         <a href="DemoFiles/filesDemo01.html" target="_blank" onclick="return false;">Drag And Drop</a><br/><br/>
         <a href="DemoFiles/filesDemo02.html" target="_blank" onclick="return false;">Copy And Paste</a><br/><br/>
-        <a href="DemoFiles/filesDemo03.html" target="_blank" onclick="return false;">Read and play MP3 file </a>
-        <br/><br/>
-        Data URL:
-        <a href="data:text/html,<textarea style='font:40pt Courier;outline:none;padding:10px;height:50%;width:100%;border:1px solid #ccc;border-radius:25px' placeholder='Inline HTML code :-) ...'></textarea>">Open
-            inline html document
-        </a>
+        <a href="DemoFiles/filesDemo03.html" target="_blank" onclick="return false;">Read and play MP3 file </a><br/><br/>
+        <a href="DemoFiles/filesDemo04.html" target="_blank" onclick="return false;">Data URL</a>
     </h3>
 </section>
+
+<section>
+    <h1 class="color2 centered">
+        <img src="images/fileAPI_128.png" align="absmiddle"> File System API
+    </h1>
+</section>
+
 
 </div>
 

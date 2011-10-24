@@ -33,15 +33,17 @@ Mp3PlayerDemo = function() {
     var settings = {
         canvasHeight: -1,
         canvasWidth : -1,
-        spacerWidth : 1,
+        spacerWidth : 2,
         columnWidth : 1,
 
         colors : [
             '#3369E8', // blue
             '#D53225', // red
             '#EEB211', // yellow
-            '#009939' // green
-        ]
+            '#009939', // green
+            '#330000', //
+            '#A00000',
+            '#003333']
     };
 
     // The Audio API context
@@ -211,7 +213,7 @@ Mp3PlayerDemo = function() {
         source.connect(audioContext.destination);
         source.connect(analyser);
 
-        // play the source now
+        // play the source now [ Play immediately.]
         source.noteOn(0);
 
         // call the dissconnet method after the file has finished playing
@@ -219,6 +221,7 @@ Mp3PlayerDemo = function() {
 
         remainTimer = setTimeout(setRemainTime, 10);
 
+        console.log(audioContext.sampleRate);
     }
 
     /**
@@ -254,8 +257,9 @@ Mp3PlayerDemo = function() {
 
         // Fill the canvas with the song data
         length = freqByteData.length;
+
         for (i = 0; i < length; ++i) {
-            magnitude = freqByteData[i] / 2;
+            magnitude = freqByteData[i] / 1.5;
             lingrad = canvasContext.createLinearGradient(0, settings.canvasHeight, 0, settings.canvasHeight - magnitude);
             lingrad.addColorStop(0, settings.colors[i % settings.colors.length]);
             lingrad.addColorStop(1, settings.colors[i % settings.colors.length]);
@@ -304,6 +308,7 @@ Mp3PlayerDemo = function() {
             dropArea.addEventListener('drop', dropEvent, false);
             dropArea.addEventListener('dragover', dragOver, false);
             dropArea.addEventListener('dragover', dragOver, false);
+
 
         }
     };

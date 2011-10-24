@@ -54,7 +54,9 @@ input[type=button] {
     position: absolute;
     bottom: 10px;
     z-index: 50;
-    background-color: #E3E3E3;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
 }
 
 fieldset {
