@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="350b92b4-14f3-41ff-b487-6a6ce6c97599" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\work\workspace\Html5Fest\.idea\workspace (from Laptop - 2).xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\workspace\Html5Fest\.idea\workspace (from Laptop).xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\workspace\Html5Fest\DemoFiles\app.mp3" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\workspace\Html5Fest\DemoFiles\app_2.mp3" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DemoFiles/filesDemo03.html" afterPath="$PROJECT_DIR$/DemoFiles/filesDemo03.html" />
     </list>
     <ignored path="Html5Fest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="56" column="13" selection-start="2107" selection-end="2107" vertical-scroll-proportion="-30.73077">
               <folding />
             </state>
           </provider>
@@ -39,7 +40,7 @@
       <file leaf-file-name="fileSystemAPI.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fileSystemAPI.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="254" column="0" selection-start="1318" selection-end="9068" vertical-scroll-proportion="-23.538462">
+            <state line="254" column="0" selection-start="1318" selection-end="9068" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -48,16 +49,16 @@
       <file leaf-file-name="filesDemo04.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DemoFiles/filesDemo04.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="7" selection-start="547" selection-end="547" vertical-scroll-proportion="-9.807693">
+            <state line="15" column="7" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="filesDemo03.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="filesDemo03.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DemoFiles/filesDemo03.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="0" selection-end="116" vertical-scroll-proportion="-2.6153846">
+            <state line="246" column="0" selection-start="7371" selection-end="7371" vertical-scroll-proportion="4.966746">
               <folding />
             </state>
           </provider>
@@ -66,7 +67,7 @@
       <file leaf-file-name="workers_shared.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DemoFiles/workers_shared.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="63" selection-start="1285" selection-end="1285" vertical-scroll-proportion="-20.384615">
+            <state line="45" column="63" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -75,7 +76,7 @@
       <file leaf-file-name="workers_inline.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DemoFiles/workers_inline.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="11" selection-start="826" selection-end="826" vertical-scroll-proportion="-14.384615">
+            <state line="22" column="11" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,10 +102,10 @@
         <option value="$PROJECT_DIR$/style/main1200.css" />
         <option value="$PROJECT_DIR$/style/main.css" />
         <option value="$PROJECT_DIR$/style/demo.css" />
-        <option value="$PROJECT_DIR$/DemoFiles/filesDemo03.html" />
         <option value="$PROJECT_DIR$/DemoFiles/workers_inline.html" />
         <option value="$PROJECT_DIR$/DemoFiles/filesDemo04.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/DemoFiles/filesDemo03.html" />
       </list>
     </option>
   </component>
@@ -134,7 +135,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -178,6 +178,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -193,16 +194,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="297" />
-    <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="971" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="976" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="971" />
+    <property name="DefaultHtmlFileTemplate" value="Html" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="292" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="285" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -249,7 +250,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1928" height="1036" extended-state="0" />
+    <frame x="-4" y="-4" width="1928" height="1036" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -257,7 +258,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13774693" sideWeight="0.67065215" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13934864" sideWeight="0.67065215" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -337,44 +338,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DemoFiles/workers_inline.html">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="11" selection-start="826" selection-end="826" vertical-scroll-proportion="-14.384615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DemoFiles/workers_shared.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="63" selection-start="1285" selection-end="1285" vertical-scroll-proportion="-20.384615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DemoFiles/filesDemo03.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="0" selection-end="116" vertical-scroll-proportion="-2.6153846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DemoFiles/filesDemo04.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="7" selection-start="547" selection-end="547" vertical-scroll-proportion="-9.807693">
+        <state line="56" column="13" selection-start="2107" selection-end="2107" vertical-scroll-proportion="-30.73077">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fileSystemAPI.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="254" column="0" selection-start="1318" selection-end="9068" vertical-scroll-proportion="-23.538462">
+        <state line="254" column="0" selection-start="1318" selection-end="9068" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/DemoFiles/filesDemo04.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="15" column="7" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DemoFiles/workers_shared.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="63" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DemoFiles/workers_inline.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="11" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DemoFiles/filesDemo03.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="246" column="0" selection-start="7371" selection-end="7371" vertical-scroll-proportion="4.966746">
           <folding />
         </state>
       </provider>
