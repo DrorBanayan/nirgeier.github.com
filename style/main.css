@@ -174,6 +174,9 @@ h4.inverted {
     padding: 10px;
     color: #000033;
     font-family: 'CondLight', Arial, Helvetica, sans-serif;
+    border: 1px solid #222222;
+     -webkit-box-shadow: 0px 0px 10px #FFFFFF;
+
 }
 
 .centered {
