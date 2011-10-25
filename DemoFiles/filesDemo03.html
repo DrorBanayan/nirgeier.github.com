@@ -20,6 +20,7 @@
     <canvas id="canvas" style="display: none;"></canvas>
 </div>
 <script>
+var applause = false;
 
 Mp3PlayerDemo = function() {
 
@@ -157,8 +158,33 @@ Mp3PlayerDemo = function() {
 
         };
 
+
+        // evt is an ProgressEvent.
+        // register the progress event
+        reader.onprogress = function (evt) {
+
+            // store the progress percent
+            var percentLoaded = -1;
+
+            if (evt.lengthComputable) {
+                // calculate the progress in %
+                percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+            }
+
+            console.log(percentLoaded);
+        };
+
+
         // Read the file content
         reader.readAsArrayBuffer(droppedFiles[0]);
+
+        if (!applause && droppedFiles[1]) {
+            applause = false;
+            reader.readAsArrayBuffer(droppedFiles[1]);
+
+        }
+
+
     }
 
     /**
